@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consumer Rights Information System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 1em 0;
+    }
+    main {
+      padding: 20px;
+    }
+    .section {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .section h2 {
+      margin-top: 0;
+    }
+    footer {
+      text-align: center;
+      padding: 10px 0;
+      background-color: #4CAF50;
+      color: white;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Consumer Rights Information System</h1>
+  </header>
+  <main>
+    <div class="section">
+      <h2>Consumer Rights</h2>
+      <ul id="rights-list">
+        <li>Right to Safety: Protects consumers from hazardous goods and services.</li>
+        <li>Right to Information: Consumers have the right to know the details of the products/services.</li>
+        <li>Right to Choose: Ensures availability of a variety of products and services at competitive prices.</li>
+        <li>Right to be Heard: Consumers have the right to voice their grievances and concerns.</li>
+        <li>Right to Redress: Consumers can seek redress for unfair practices or unsatisfactory services.</li>
+        <li>Right to Consumer Education: Ensures consumers are informed and can make sound decisions.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Lodge a Complaint</h2>
+      <form id="complaint-form">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="issue">Describe your issue:</label><br>
+        <textarea id="issue" name="issue" rows="4" required></textarea><br><br>
+        <button type="submit">Submit Complaint</button>
+      </form>
+    </div>
+
+    <div class="section">
+      <h2>View Complaints</h2>
+      <ul id="complaints-list">
+        <li>No complaints yet.</li>
+      </ul>
+    </div>
+  </main>
+  <footer>
+    <p>© 2024 Consumer Rights Information System</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById("complaint-form");
+    const complaintsList = document.getElementById("complaints-list");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      const name = document.getElementById("name").value;
+      const issue = document.getElementById("issue").value;
+
+      if (complaintsList.children[0].textContent === "No complaints yet.") {
+        complaintsList.innerHTML = "";
+      }
+
+      const listItem = document.createElement("li");
+      listItem.textContent = `${name}: ${issue}`;
+      complaintsList.appendChild(listItem);
+
+      form.reset();
+      alert("Your complaint has been submitted successfully!");
+    });
+  </script>
+</body>
+</html>
